@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visualisation Project</title>
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Load required scripts -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+</head>
+
+<body>
+    <main class="main">
+        <div class="type-animation-section">
+            <h1 class="type-animated-text">Is Covid just a flu? If not, will it be?</h1>
+        </div>
+
+        <section class="article-section">
+            <div class="container-bottom0">
+                <h1 class="article-heading">The year of 2019 has been a life changing year</h1>
+                <p class="article">And it will surely occupy at least a page in future
+                    literatures. The debuting of COVID has brought significant impacts to the world, though, some may
+                    see it
+                    as a marvellous opportunity while some may see it as a catastrophe. The attitude of a sovereign, or
+                    even
+                    a nation, determine its behavioural decisions as well as its countermeasure towards COVID to a great
+                    extent. Speaking of national level of point of view, each nation’s strategies in manging the
+                    pandemic
+                    largely varied. In essence, it is a dilemma of putting either the economy or social stability as the
+                    top
+                    priority at that one specific timeframe. “It’s just a flu” has been a famous quote of former
+                    president
+                    of the U.S. – Donald Trump during the initial stage of the pandemic. This data exploration study
+                    attempts to examine such statement, to see whether it was just a soothing statement or in fact, it
+                    was a
+                    scientific conclusion.</p>
+            </div>
+            <section class="elastic-animated-container">
+                <div class="box">
+                    <p class="elastic-text">Global Death Toll of Covid-19 has Exceeded 6 million</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="choropleth-section">
+            <div class="container-top0">
+                <div class="even-columns">
+                    <div class="left-section">
+                        <h2 class="article-heading">Global Situation</h2>
+                        <p class="inner-article">Globally, there
+                            have been more than 600 million of confirmed cases of COVID-19, which has been declared as a
+                            pandemic on
+                            11
+                            March 2020 by World Health Organisation (WHO). After more than a decade from the H1N1 Swine
+                            Flu
+                            (2009),
+                            the
+                            last
+                            global pandemic, people, and especially, politicians often make comparisons between the two.
+                            Although,
+                            former is categorised as influenza virus while the latter is corona virus, still, they share
+                            many
+                            similarities. Not only the contagiousness and respiratory symptoms, but also the evolution
+                            processes as
+                            well
+                            as
+                            the way how human deal with it. Therefore, it will be intriguing to take both into
+                            examination
+                            and see
+                            if we
+                            could find something that we could not have thought of.</p>
+                    </div>
+
+                    <div class="right-section">
+                        <svg id="map-dataviz" width="500" height="500"></svg>
+                        <div class="map-tooltip" id="map-label" x="10" y="390"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <script src="map.js"></script>
+
+        <!-- Function for radial charts -->
+        <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+
+        <seciton class="mortality-section">
+            <div class="container">
+                <div class="even-columns">
+                    <div class="left-section">
+                        <h2 class="heading">Crude Mortality Rate Comparison between Flu</h2>
+                        <p class="inner-article">Before diving deep, the following circular plot represents a comparison
+                            between some historical
+                            well-known influenzas in terms of crude mortality rate, intending to provide a brief
+                            impression
+                            of
+                            how
+                            many
+                            populations had been killed by these infectious diseases. The saturation of coloring
+                            indicates
+                            crude
+                            mortality rate. With this approach, COVID-19 appeared to be far worse than the last pandemic
+                            -
+                            H1N1
+                            swine
+                            flu in 2009.</p>
+                        <p class="inner-article">For those such as Spanish flu and Asian flu, the exact number is
+                            unknown.
+                            Multiple datasets
+                            have been included estimating by different researchers corresponding with different
+                            statistical
+                            techniques
+                            (Hannah et
+                            al., 2020).</p>
+                        <p class="inner-article">However, crude fatality rate neglects a critical factor - the
+                            transmissibility of a disease. This also explains why crude fatality rate of COVID-19 has
+                            been
+                            extremely
+                            varied across countries ranging from 0.82% to 14.2% whereas age-adjusted CFR was 2.57
+                            (Green,
+                            Peer,
+                            Schwartz
+                            & Nitzan, 2020). In the following section, factors such as age and countries as well as CFR
+                            will
+                            be
+                            discussed.</p>
+                    </div>
+                    <div class="right-section">
+                        <div id="circular-plot"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </seciton>
+
+        <script src="circular_plot.js"></script>
+
+        <section class="fatality-section">
+            <div class="container-top0">
+                <h2 class="heading">Case Fatality Rate Comparison between 2009 Pandemic & COVID-19</h2>
+                <p class="inner-article width-70">Fatality can be simply referred to the death rate per 100
+                    cases of an
+                    infectious disease. When
+                    performing statistical analysis of fatality, there have been three mainstream approaches including
+                    Case
+                    Fatality Rate (CFR), Infectious Fatality Rate (IFR) and Crude Mortality Rate. CFR has been a popular
+                    approach and often cited by media when risk of death of COVID-19 is discussed; It is calculated
+                    through
+                    “number of death / total of diagnosed cases * 100“ while IFR is calculated as “number of death /
+                    total
+                    number of infected * 100”. Ideally, IFR seems to be the best approach to answer the question of “how
+                    deadly
+                    the disease is ?”, however, total number of infected is often not known especially for COVID-19 as
+                    there
+                    are
+                    many people who were symptomless and thus had not been diagnosed as a case. Therefore, CFR becomes a
+                    reasonable choice for media as well as the current study in comparing the fatality rate of the
+                    diseases.
+                </p>
+
+                <div class="fatality-vis">
+                    <div class="cfr-triangle-wrapper big">
+                        <svg id="triangle3" viewBox="0 0 100 100">
+                            <polygon id="tri3" class="tri3" points="50 15, 100 100, 0 100" fill="#6495ED" />
+                            <text x="50" y="6" text-anchor="middle" fill="white" font-size="3">COVID-19</text>
+                            <text id="tooltip3" class="tooltip" x="70" y="38" display="none"
+                                font-size="10">0.0051</text>
+                        </svg>
+                    </div>
+                    <div class="cfr-triangle-wrapper mid">
+                        <svg id="triangle2" viewBox="0 0 100 100">
+                            <polygon id="tri2" class="tri2" points="50 15, 100 100, 0 100" fill="#357EC7" />
+                            <text x="50" y="6" text-anchor="middle" fill="white" font-size="9">Seasonal Flu</text>
+                            <text id="tooltip2" class="tooltip" x="70" y="38" display="none"
+                                font-size="10">0.0046</text>
+                        </svg>
+                    </div>
+                    <div class="cfr-triangle-wrapper small">
+                        <svg id="triangle" viewBox="0 0 100 100">
+                            <polygon id="tri1" class="tri1" points="50 15, 100 100, 0 100" fill="#d52105b4" />
+                            <text x="50" y="12" text-anchor="middle" fill="white" font-size="5">2009 Flu (H1N1)</text>
+                            <text id="tooltip1" class="tooltip" x="70" y="38" display="none" font-size="5">0.021</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="bar-chart-section">
+            <div class="container">
+                <h2 class="heading">Estimated Seasonal Flu Burden in U.S. (2010-2020)</h2>
+                <p class="inner-article width-70 centered left-aligned">Seasonal flu, as the extension of H1N1 - 2009
+                    pandemic,
+                    appeared to
+                    share
+                    high similarities
+                    with COVID-19 in terms of fatality rate (deadliness). Therefore, the estimated burden of seasonal
+                    flu
+                    adapted from U.S. CDC (2022) was examined and provided as the following visualization.</p>
+                <button class="bar-chart-btn" onclick="update('Symptomatic')">Symptomatic</button>
+                <button class="bar-chart-btn" onclick="update('Medical_Visit')">Medical Visit</button>
+                <button class="bar-chart-btn" onclick="update('Hospitalization')">Hospitalisation</button>
+                <div id="bar-chart"></div>
+            </div>
+        </section>
+
+        <section class="line-graph-section">
+            <div class="container-top0">
+                <h2 class="heading">Coincidence?</h2>
+                <p class="inner-article width-70 centered left-aligned">The visualization revealed a similar degree of
+                    fluctuating patterns in
+                    all
+                    ‘Symptomatic
+                    Illness’, ‘Medical Visit’ and ‘Hospitalization’ with a commonality of a notable plummeting following
+                    by
+                    the
+                    first debuting of the disease. This also happened to match with current COVID-19 patterns, which is
+                    shown as
+                    the following.</p>
+                <p class="inner-article width-70 centered left-aligned">Inferring based on this theoretical thought,
+                    COVID-19 will be very
+                    likely
+                    to have a significant
+                    bounce back in the upcoming year and will thereafter be fluctuating at a certain level existing just
+                    like a
+                    seasonal and flu-like infectious disease.</p>
+                <div id="line-graph"></div>
+            </div>
+        </section>
+
+        <script>
+            const line_bar_chart_article = document.querySelectorAll("p.width-70");
+            if (window.innerWidth <= 800) {
+                line_bar_chart_article.forEach(el => {
+                    el.classList.remove("width-70")
+                });
+            }
+        </script>
+
+        <div class="type-animation-section">
+            <h1 class="type-animated-text">So what is the conclusion..? Limitation?</h1>
+        </div>
+
+        <section class="article-section">
+            <div class="container">
+                <h1 class="article-heading">In terms of CFR, Trump could be right</h1>
+                <p class="article">The study first addressed the issue of multiple approaches of calculating
+                    death rate and have been used inconsistently by media, politicians, and researchers. The concepts of
+                    Case
+                    Fatality Rate (CFR), Infection Fatality Rate (IFR), and Crude Mortality Rate were then introduced
+                    and
+                    declared CFR will be employed as the base comparing approach between diseases along with the reasons
+                    of
+                    why
+                    such approach. As the result, research question 1 was answered through comparing the CFR between
+                    H1N1
+                    swine
+                    flu (2009) and COVID-19, which supports Trump’s statement and verified that CFR was the approach of
+                    his
+                    conclusions. In the exploration of the CFR, the seasonal flu, as the extensions of H1N1 flu, was
+                    found
+                    highly resembling COVID-19 and thus, the health-care system burden of seasonal flu was examined. An
+                    interesting pattern was later found and happened to match with the current state of COVID-19. Based
+                    on
+                    such
+                    finding, a hypothesis was proposed inferring that COVID-19 will be very likely to have a significant
+                    bounce
+                    back in the upcoming quarter or year.</p>
+
+                <div class="spacer-block-10"></div>
+
+                <h1 class="article-heading">Reflection</h1>
+                <p class="article">In researching the current project, I learnt the concepts of CFR, CMR and IFR. It
+                    assisted me to
+                    developed
+                    analyses that were so much more in-depth and I like such mindset a great deal since I am a
+                    psychology
+                    graduated. The understanding of different statistical approaches allow clarifications of the puzzle
+                    of
+                    fatality, which often large varied across nations but we tend to ascribe the reason to economical
+                    factors.
+                    Media often cited the CFR approach while institutional researches usually employed IFR as they are
+                    capable
+                    to develop statistical modelling via machine learning and thus, able to estimate the total number of
+                    infected with a relatively reasonable amount of errors.
+                    As for this study, it is worth noting that the theoretical thoughts were proposed solely based on
+                    the
+                    healthcare-system burden datasets adapted from U.S. CDC (2020). CFR was employed in exploration due
+                    to
+                    the
+                    absence of data modelling capability. The research approach was to “analyse what I see not what I
+                    think”,
+                    therefore, the inference may seem to be reasonable to certain degree, but it was not rigorous and
+                    thorough.
+                    It required large amount of further researches to refine and add complexities such as territory, age
+                    and
+                    chronic illness. One of the major limitations is that the datasets were limited to the U.S.
+                    providing
+                    limited representativeness. Data of H1N1 swine flu in 2009, in particular, was almost not possible
+                    to be
+                    recovered without adapting existing estimations unlike data of COVID-19. When comparing the two
+                    disease,
+                    age
+                    was actually another intriguing factor, which would be even
+                    more interesting if it was included into the data explorations.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="bar_chart_1.js"></script>
+    <script src="line_chart_1.js"></script>
+    <script>
+        update('Symptomatic')
+    </script>
+
+</body>
+
+</html>
